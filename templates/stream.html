@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content%}
+	{% for post in stream%}
+		<article>
+			<i class="clock"></i><time datetime="{{ post.timestamp }}" class="disTime" datetime="{{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}">{{post.timestamp.strftime('%Y-%m-%d %H:%M:%S')}}</time><a href="{{ url_for('view_post', post_id = post.id) }}" class="view"> View</a>
+			<div class="post">
+				{{ post.content }}
+			</div>
+		</article>
+                <a href="{{ url_for('like_action', post_id=post.id, action='like') }}">Like</a>
+                <a href="{{ url_for('like_action', post_id=post.id, action='unlike') }}">Unlike</a>
+	{% endfor%}
+{% endblock %}
