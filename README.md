@@ -3,10 +3,23 @@ blog (REST API)
 
 # Basic Features:
 * user signup
+
+![Alt text](static/doc/1.png?raw=true "Basic Features")
+![Alt text](static/doc/1_2.png?raw=true "Basic Features")
 * user login
+
+![Alt text](static/doc/1.png?raw=true "Basic Features")
+![Alt text](static/doc/2_2.png?raw=true "Basic Features")
 * post creation
+
+![Alt text](static/doc/3_1.png?raw=true "Basic Features")
+![Alt text](static/doc/3_2.png?raw=true "Basic Features")
 * post like
+
+![Alt text](static/doc/4_1.png?raw=true "Basic Features")
+![Alt text](static/doc/4_2.png?raw=true "Basic Features")
 * post unlike
+
 * analytics about how many likes was made. 
  Example ```url /api/analitics/?date_from=2020-06-02&date_to=2020-06-15```
  API should return analytics aggregated by day.
