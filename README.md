@@ -13,4 +13,4 @@ blog (REST API)
 * user activity an endpoint which will show when user was login last time and when he mades a last 
 request to the service.
 
-![Alt text](doc/6.png?raw=true "Basic Features")
+![Alt text](static/doc/6.png?raw=true "Basic Features")
