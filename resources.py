@@ -207,6 +207,11 @@ class PostLike(Resource):
 class LikeCount(Resource):
     @jwt_required
     def get(self):
+        '''
+        "analytics about how many likes was made"
+        Example url: /api/analitics/?date_from=2020-02-02&date_to=2020-02-15
+        :return: analytics aggregated by day
+        '''
         data = parser_like_count.parse_args()
         app.logger.info(request)
         date___from, date___to = data['date_from'],data['date_to']
@@ -267,6 +272,13 @@ class LikeCount(Resource):
 class UserActivity(Resource):
     @jwt_required
     def get(self, user):
+        '''
+        "analytics about how many likes was made"
+        Example url: /api/activity/username
+        :param user: username
+        :return: when user was login last time
+        and when he mades a last request to the service
+        '''
         app.logger.info(request)
         user_id = User.get(User.username == user)
 
