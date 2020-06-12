@@ -121,7 +121,7 @@ def initialize():
 	try:
 		db.connect()
 		print('db.connect()')
-		db.create_tables([User, Post, Like, Unlike, Activity], safe = True)
+		db.create_tables([User, Post, Like, Unlike], safe = True)
 
 	except peewee.InternalError as px:
 		print(str(px))
