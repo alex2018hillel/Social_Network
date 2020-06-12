@@ -103,16 +103,6 @@ class Unlike(Model):
 		table_name = 'unlikes'
 
 
-class Activity(Model):
-	user = ForeignKeyField(User, column_name='user_id')
-	conect = TextField()
-	timestamp = DateTimeField(default = datetime.datetime.now)
-
-	class Meta:
-		database = db
-		table_name = 'activity'
-
-
 class RevokedTokenModel(Model):
     __tablename__ = 'revoked_tokens'
     jti = CharField(max_length = 100)

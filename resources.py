@@ -1,3 +1,5 @@
+from settings import JWT_SECRET_KEY
+import jwt
 from flask import jsonify, g
 from flask_restful import Resource, reqparse, request
 import datetime
@@ -74,17 +76,6 @@ class UserLogin(Resource):
         if verify_hash(data['password'], g.user.password):
             access_token = create_access_token(identity = data['username'])
             refresh_token = create_refresh_token(identity = data['username'])
-            user_id = User.select().where(User.username == data['username'])
-            now_time = datetime.datetime.now(tz=None)
-            login_time = now_time.strftime("%Y-%m-%d %H:%M:%S.%f")
-
-            try:
-                Activity.create(user_id = user_id, conect = login_time)
-            except:
-                app.logger.error('Something went wrong (delete_instance_Unlike')
-                return {'message': 'Something went wrong (delete_instance_Unlike)',
-                        'code': 500
-                        }
             '''
             turn ON, if use the JWT access cookie:
             # app.config['JWT_TOKEN_LOCATION'] =  ["cookies"]
@@ -106,7 +97,6 @@ class UserLogin(Resource):
                 'message': 'Logged in as {}'.format(g.user.username),
                 'access_token': access_token,
                 'refresh_token': refresh_token,
-                'login_time': login_time,
                 'code': 201
             }
 
@@ -280,7 +270,6 @@ class UserActivity(Resource):
         and when he mades a last request to the service
         '''
         app.logger.info(request)
-        user_id = User.get(User.username == user)
 
         def time_query(query):
             post_time = []
@@ -293,15 +282,21 @@ class UserActivity(Resource):
             else:
                 return 0
 
-        query = Activity.select().where(Activity.user_id == user_id)
+        jwt_token = request.headers.get('authorization', None)
+        if jwt_token:
+            try:
+                decoded = jwt.decode(jwt_token, JWT_SECRET_KEY, algorithms='HS256')
+                iat = datetime.datetime.fromtimestamp(int(decoded['iat']))
 
+            except (jwt.DecodeError, jwt.ExpiredSignatureError):
+                return {'message': 'Token is invalid'}
+
+        user_id = User.get(User.username == user)
         post_time_query = Post.select().where(Post.user_id == user_id)
-
         like_time_query = Like.select().where(Like.user_id == user_id)
-
         unlike_time_query = Unlike.select().where(Unlike.user_id == user_id)
 
-        return {'login time': time_query(query),
+        return {'login time': str(iat),
                 'post time': time_query(post_time_query),
                 'like time': time_query(like_time_query),
                 'unlike time': time_query(unlike_time_query),
