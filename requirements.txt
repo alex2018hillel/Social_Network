@@ -25,3 +25,4 @@ wsgiref==0.1.2
 peewee==3.13.3
 more-itertools==7.00
 Flask-JWT-Extended==3.24.1
+passlib==1.7.2
