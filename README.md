@@ -1,5 +1,10 @@
 # Social Network
 blog (REST API)
+# Install
+* install requirements.txt
+* pip install flask_restful
+* pip install passlib
+* pip install Flask-WTF
 
 # Basic Features:
 * user signup
