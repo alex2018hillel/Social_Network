@@ -5,6 +5,7 @@ blog (REST API)
 * pip install flask_restful
 * pip install passlib
 * pip install Flask-WTF
+* pip install psycopg2
 
 # Basic Features:
 * user signup - /api/registration  Example:
