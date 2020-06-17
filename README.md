@@ -8,7 +8,8 @@ blog (REST API)
 * pip install psycopg2
 
 # Basic Features:
-* user signup - /api/registration  Example:
+* user signup - /api/registration  
+Example: POST,
 {
     "username": "test4444",
     "email": "emailX4@yahoo.com",
@@ -18,7 +19,8 @@ blog (REST API)
 ![Alt text](static/doc/post.png?raw=true "Basic Features")
 ![Alt text](static/doc/1.png?raw=true "Basic Features")
 ![Alt text](static/doc/1_2.png?raw=true "Basic Features")
-* user login - /api/login  Example: POST,
+* user login - /api/login  
+Example: POST,
 {
     "username": "test4444",
     "email": "emailX4@yahoo.com",
@@ -28,7 +30,8 @@ blog (REST API)
 ![Alt text](static/doc/post.png?raw=true "Basic Features")
 ![Alt text](static/doc/1.png?raw=true "Basic Features")
 ![Alt text](static/doc/2_2.png?raw=true "Basic Features")
-* post creation - /post/create  Example: POST,
+* post creation - /post/create  
+Example: POST,
 {
     "content": "abcd"
 }
@@ -36,13 +39,15 @@ blog (REST API)
 ![Alt text](static/doc/post.png?raw=true "Basic Features")
 ![Alt text](static/doc/3_1.png?raw=true "Basic Features")
 ![Alt text](static/doc/3_2.png?raw=true "Basic Features")
-* post like - /api/post/like  Example: POST,
+* post like - /api/post/like  
+Example: POST,
 {"like": "True", "post_id":"3"}
 
 ![Alt text](static/doc/post.png?raw=true "Basic Features")
 ![Alt text](static/doc/4_1.png?raw=true "Basic Features")
 ![Alt text](static/doc/4_2.png?raw=true "Basic Features")
-* post unlike  - /api/post/like  Example: POST,
+* post unlike  - /api/post/like  
+Example: POST,
 {"like": "False", "post_id":"3"}
 
 * analytics about how many likes was made - /api/analitics/
