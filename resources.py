@@ -6,7 +6,7 @@ import datetime
 from  more_itertools import unique_everseen
 from peewee import fn
 from flask import current_app as app
-from models import User, Post, Like, Unlike, Activity, RevokedTokenModel, generate_hash, verify_hash#
+from models import User, Post, Like, Unlike, RevokedTokenModel, generate_hash, verify_hash#
 from flask_jwt_extended import (create_access_token,
                                 create_refresh_token,
                                 jwt_required,

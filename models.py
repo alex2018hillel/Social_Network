@@ -2,6 +2,7 @@ import peewee
 import datetime
 from passlib.hash import pbkdf2_sha256 as sha256
 from peewee import *
+from peewee import PostgresqlDatabase
 import re
 from settings import POSTGRES
 
